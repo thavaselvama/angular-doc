@@ -47,3 +47,9 @@ console.log(id.getattribute('value')) /// Sarah
 console.log(id.value) /// user enter value
 
 ```
+# Property binding [property]
+- Use property binding to set properties of target elements or directive @Input() decorators.
+https://stackblitz.com/angular/dyraajpdmea?file=src%2Fapp%2Fapp.component.ts
+## One-way in
+
+
