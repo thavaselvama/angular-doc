@@ -181,7 +181,68 @@ https://stackblitz.com/angular/ryvkjqvabgj?file=src%2Fapp%2Fapp.component.ts
 ## @Input() and @Output() properties
 - @Input() and @Output() allow Angular to share data between the parent context and child directives or components. An @Input() property is writable while an @Output() property is observable
 
+### How to use @Input()
+
+![image of Input](https://angular.io/generated/images/guide/inputs-outputs/input.svg)
+
+### In the child
+To use the @Input() decorator in a child component class, first import Input and then decorate the property with @Input():
+```
+import { Component, Input } from '@angular/core'; // First, import Input
+export class ItemDetailComponent {
+  @Input() item: string; // decorate the property with @Input()
+}
+```
+### In the parent
+```
+<app-item-detail [item]="currentItem"></app-item-detail>
+```
+![image parent](https://angular.io/generated/images/guide/inputs-outputs/input-diagram-target-source.svg)
 
 
+### How to use @Output()
+- Use the @Output() decorator in the child component or directive to allow data to flow from the child out to the parent.
+![output ](https://angular.io/generated/images/guide/inputs-outputs/output.svg)
 
+### In the child
+```
+export class ItemOutputComponent {
 
+  @Output() newItemEvent = new EventEmitter<string>();
+
+  addNewItem(value: string) {
+    this.newItemEvent.emit(value);
+  }
+}
+```
+### In the parent
+```
+export class AppComponent {
+  items = ['item1', 'item2', 'item3', 'item4'];
+
+  addItem(newItem: string) {
+    this.items.push(newItem);
+  }
+}
+```
+### @Input() and @Output() together
+![](https://angular.io/generated/images/guide/inputs-outputs/input-output-diagram.svg)
+
+## The pipe operator (|)
+
+```
+<p>Title through uppercase pipe: {{title | uppercase}}</p>
+<!-- convert title to uppercase, then to lowercase -->
+<p>Title through a pipe chain: {{title | uppercase | lowercase}}</p>
+<!-- pipe with configuration argument => "February 25, 1980" -->
+<p>Manufacture date with date format pipe: {{item.manufactureDate | date:'longDate'}}</p>
+<p>Item json pipe: {{item | json}}</p>
+
+```
+## Built-in template functions
+### The $any() type cast function
+ - Sometimes a binding expression triggers a type error during AOT compilation and it is not possible or difficult to fully specify the type. To silence the error, you can use the $any() cast function to cast the expression to the any type as in the following example:
+ ```
+ <p>The item's undeclared best by date is: {{$any(item).bestByDate}}</p>
+
+ ```
