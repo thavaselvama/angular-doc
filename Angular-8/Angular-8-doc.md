@@ -70,7 +70,7 @@ export class AppComponent {
 }
 
 ```
-- 
+- binding type
 ```
 <!-- Notice the colSpan property is camel case -->
 <tr><td [colSpan]="2">Span 2 columns</td></tr>
@@ -85,6 +85,18 @@ export class AppComponent {
 ```
 <app-item-detail [childItem]="parentItem"></app-item-detail>
 ```
+## Attribute binding
+- Set the value of an attribute directly with an attribute binding
+```
+<button [attr.aria-label]="actionName">{{actionName}} with Aria</button>
+```
+## Class binding
+<h3>Basic specificity</h3>
+```
+<!-- The `class.special` binding will override any value for the `special` class in `classExpr`.  -->
+<div [class.special]="isSpecial" [class]="classExpr">Some text.</div>
 
-
+<!-- The `style.color` binding will override any value for the `color` property in `styleExpr`.  -->
+<div [style.color]="color" [style]="styleExpr">Some text.</div>
+```
 
