@@ -7,3 +7,14 @@
    - In the following snippet, {{ currentCustomer }} is an example of interpolation.
  - Template expressions are what you use to calculate those strings.
    - template expression appears in quotes to the right of the = symbol as in [property]="expression"
+   
+ You can't use JavaScript expressions that have or promote side effects, including:
+
+ - Assignments (=, +=, -=, ...)
+- Operators such as new, typeof, instanceof, etc.
+- Chaining expressions with ; or ,
+- The increment and decrement operators ++ and --
+- Some of the ES2015+ operators
+
+- No support for the bitwise operators such as | and &
+New template expression operators, such as |, ?. and !
