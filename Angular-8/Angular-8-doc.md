@@ -51,5 +51,22 @@ console.log(id.value) /// user enter value
 - Use property binding to set properties of target elements or directive @Input() decorators.
 https://stackblitz.com/angular/dyraajpdmea?file=src%2Fapp%2Fapp.component.ts
 ## One-way in
+-- One-way data binding will bind the data from the component to the view (DOM) or from view to the component. One-way data binding is unidirectional. You can only bind the data from component to the view or from view to the component.
+```
+import { Component } from "@angular/core";
+@Component({
+  selector: 'app-example',
+  template: `
+              <div>
+              <strong>{{firstName}}</strong>
+               <strong>{{lastName}}</strong>
+              </div>
+              `
+})
 
+export class AppComponent {
+  firstName: string = "Yallaling";
+  lastName:string = "Goudar";
+}
+```
 
