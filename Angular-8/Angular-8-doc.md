@@ -162,6 +162,39 @@ Two-way binding does two things:
 ```
 https://stackblitz.com/angular/kbelykomnrk?file=src%2Fapp%2Fapp.component.ts
 
+### detailed example
+```
+<fieldset><h4>NgModel examples</h4>
+  <p>Current item name: {{currentItem.name}}</p>
+  <p>
+    <label for="without">without NgModel:</label>
+    <input [value]="currentItem.name" (input)="currentItem.name=$event.target.value" id="without">
+
+  </p>
+
+  <p>
+    <label for="example-ngModel">[(ngModel)]:</label>
+    <input [(ngModel)]="currentItem.name" id="example-ngModel">
+  </p>
+
+  <p>
+    <label for="example-bindon">bindon-ngModel: </label>
+    <input bindon-ngModel="currentItem.name" id="example-bindon">
+  </p>
+
+  <p>
+    <label for="example-change">(ngModelChange)="...name=$event":</label>
+    <input [ngModel]="currentItem.name" (ngModelChange)="currentItem.name=$event" id="example-change">
+  </p>
+
+  <p>
+    <label for="example-uppercase">(ngModelChange)="setUppercaseName($event)"
+      <input [ngModel]="currentItem.name" (ngModelChange)="setUppercaseName($event)" id="example-uppercase">
+    </label>
+  </p>
+</fieldset>
+```
+
 ## Template reference variables (#var)
 - A template reference variable is often a reference to a DOM element within a template. It can also refer to a directive (which contains a component), an element, TemplateRef, or a web component.
 ```
