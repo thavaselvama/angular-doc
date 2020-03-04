@@ -18,3 +18,9 @@
 
 - No support for the bitwise operators such as | and &
 New template expression operators, such as |, ?. and !
+
+## Expression context
+- The expression context is typically the component instance. In the following snippets, the recommended within double curly braces and the itemImageUrl2 in quotes refer to properties of the AppComponent.
+
+- example 
+
