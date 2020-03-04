@@ -24,5 +24,26 @@ New template expression operators, such as |, ?. and !
 
 - example
 
+```
 <img [src]="itemImageUrl2">
 
+```
+
+##  HTML attribute vs. DOM property
+
+- The distinction between an HTML attribute and a DOM property is key to understanding how Angular binding works. Attributes are defined by HTML. Properties are accessed from DOM (Document Object Model) nodes.
+
+- Example
+
+- When the browser renders 
+```
+<input id='name' type="text" value="Sarah">
+```
+- it creates a corresponding DOM node with a value property initialized to "Sarah".
+
+```
+var id. = document.getElementById('name');
+console.log(id.getattribute('value')) /// Sarah
+console.log(id.value) /// user enter value
+
+```
