@@ -137,3 +137,51 @@ delete() {
   this.lineThrough = this.lineThrough ? '' : 'line-through';
 }
 ```
+```
+<app-item-detail (deleteRequest)="deleteItem($event)" [item]="currentItem"></app-item-detail>
+```
+
+## Two-way binding [(...)]
+- Two-way binding gives your app a way to share data between a component class and its template.
+https://stackblitz.com/angular/oabeoendjyx?file=src%2Fapp%2Fapp.component.ts
+
+### Basics of two-way binding
+Two-way binding does two things:
+
+  * Sets a specific element property.
+  * Listens for an element change event.
+  
+## [(ngModel)]: Two-way binding
+- The NgModel directive allows you to display a data property and update that property when the user makes changes. Here's an example:
+```
+<label for="example-ngModel">[(ngModel)]:</label>
+<input [(ngModel)]="currentItem.name" id="example-ngModel">
+```
+```
+<app-sizer [size]="fontSizePx" (sizeChange)="fontSizePx=$event"></app-sizer>
+```
+https://stackblitz.com/angular/kbelykomnrk?file=src%2Fapp%2Fapp.component.ts
+
+## Template reference variables (#var)
+- A template reference variable is often a reference to a DOM element within a template. It can also refer to a directive (which contains a component), an element, TemplateRef, or a web component.
+```
+<form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">
+  <label for="name"
+    >Name <input class="form-control" name="name" ngModel required />
+  </label>
+  <button type="submit">Submit</button>
+</form>
+
+<div [hidden]="!itemForm.form.valid">
+  <p>{{ submitMessage }}</p>
+</div>
+```
+https://stackblitz.com/angular/ryvkjqvabgj?file=src%2Fapp%2Fapp.component.ts
+
+## @Input() and @Output() properties
+- @Input() and @Output() allow Angular to share data between the parent context and child directives or components. An @Input() property is writable while an @Output() property is observable
+
+
+
+
+
