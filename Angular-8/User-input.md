@@ -38,4 +38,72 @@ export class ClickMeComponent {
     this.values += event.target.value + ' | ';
   }
   ```
-  
+  ![Image of Yaktocat](https://angular.io/generated/images/guide/user-input/keyup1-anim.gif)
+ 
+## Get user input from a template reference variable
+
+There's another way to get the user data: use Angular [!template reference variables](https://angular.io/guide/template-syntax#ref-vars). These variables provide direct access to an element from within the template. To declare a template reference variable, precede an identifier with a hash (or pound) character (#).
+
+```
+@Component({
+  selector: 'app-loop-back',
+  template: `
+    <input #box (keyup)="0">
+    <p>{{box.value}}</p>
+  `
+})
+export class LoopbackComponent { }
+```
+![image](https://angular.io/generated/images/guide/user-input/keyup-loop-back-anim.gif)
+
+Another example
+
+```
+@Component({
+  selector: 'app-key-up2',
+  template: `
+    <input #box (keyup)="onKey(box.value)">
+    <p>{{values}}</p>
+  `
+})
+export class KeyUpComponent_v2 {
+  values = '';
+  onKey(value: string) {
+    this.values += value + ' | ';
+  }
+}
+```
+## Key event filtering (with key.enter)
+ - The (keyup) event handler hears every keystroke.
+ ```
+ @Component({
+  selector: 'app-key-up3',
+  template: `
+    <input #box (keyup.enter)="onEnter(box.value)">
+    <p>{{value}}</p>
+  `
+})
+export class KeyUpComponent_v3 {
+  value = '';
+  onEnter(value: string) { this.value = value; }
+}
+```
+![](https://angular.io/generated/images/guide/user-input/keyup3-anim.gif)
+
+## On blur
+```
+@Component({
+  selector: 'app-key-up4',
+  template: `
+    <input #box
+      (keyup.enter)="update(box.value)"
+      (blur)="update(box.value)">
+
+    <p>{{value}}</p>
+  `
+})
+export class KeyUpComponent_v4 {
+  value = '';
+  update(value: string) { this.value = value; }
+}
+```
