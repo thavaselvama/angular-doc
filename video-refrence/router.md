@@ -112,4 +112,21 @@ export class UserComponent implements OnInit,OnDestroy {
 
 }
  ```
+## RXJS
+ - rxjs offering all observing functionality. Angular use this packege.
+ - Subscription use to destory memory
+ 
+ ## Query params
+ 
+ ```
+ this.router.navigate(['/servers',5,'edit'], [queryParams] = {'allowedit : 1'});
+ ```
+ 
+ its will display in URL 
+ 
+ ```
+ servers/5/edit?allowedit=1
+ ```
+ 
+ 
  
