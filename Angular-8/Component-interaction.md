@@ -46,3 +46,38 @@ export class ProductDetailsComponent implements OnInit {
 }
 ```
 @Input receive data from parents to child.
+
+## Parent listens for child event
+
+Passing data from child to parent using @Output
+
+```
+import { Component, OnInit,Output,EventEmitter } from '@angular/core';
+import { products } from '../products';
+@Component({
+  selector: 'app-product-click',
+  templateUrl: './product-click.component.html',
+  styleUrls: ['./product-click.component.css']
+})
+export class ProductClickComponent implements OnInit {
+products = products;
+@Output() productSlct = new EventEmitter<any>();
+  constructor() { }
+
+  ngOnInit() {
+  }
+selectProduct(select){
+this.productSlct.emit(select)
+}
+}
+```
+````
+<h4>Parent listens for child event</h4>
+<app-product-click (productSlct)="selectedProductDetails($event)"></app-product-click>
+````
+```
+selectedProductDetails(data){
+  console.log(data)
+this.selectedData = data;
+}
+```
