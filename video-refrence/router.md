@@ -11,3 +11,66 @@
  { path: 'product:id', component : productComponent},
  ```
  This colon tell this dynamic,in will take with in 
+ 
+ - retrive route parameter following example
+ 
+ ```
+ import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute,Params } from '@angular/router'
+
+@Component({
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.css']
+})
+export class UserComponent implements OnInit {
+  user: {id: number, name: string};
+
+  constructor( private avtivateRoute : ActivatedRoute) { }
+
+  ngOnInit() {
+    this.user = {
+      id : this.avtivateRoute.snapshot.params['id'],
+      name : this.avtivateRoute.snapshot.params['name']
+    }
+    console.log(this.user)
+  }
+
+}
+ ```
+ 
+ ```
+ User {{user.id}} is  {{user.name}}
+ ```
+ 
+  - If programaticatally load url params its don't chage in html
+  
+example 
+
+[routerLink="['/user',10,'test']"
+  
+  ```
+  User {{user.id}} is  {{user.name}}
+  ```
+  
+  because same component cant reload 
+  
+  ```
+  
+  ngOnInit() {
+    this.user = {
+      id : this.activateRoute.snapshot.params['id'],
+      name : this.activateRoute.snapshot.params['name']
+    };
+    this.route.params
+    .subscribe(
+    (params : Params) =>{
+    this.user.id = params['id'],
+    this.user.name = params['name'],
+    }
+    )
+  }
+
+  ```
+  
+ 
