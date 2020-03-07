@@ -128,5 +128,30 @@ export class UserComponent implements OnInit,OnDestroy {
  servers/5/edit?allowedit=1
  ```
  
+ ## Child Routes
+
+```
+const routes: Routes = [
+  {
+    path: '',
+    component: RecipesComponent,
+  },
+  {
+    path: 'recipe',
+    component: RecipesComponent,
+    children: [
+      { path: '', component: RecipeStartComponent },
+    ]
+  },
+  {
+    path: 'shopping-list',
+    component: ShoppingListComponent,
+  },
+];
+```
+- inject <router-outlet></router-outlet> in your parent component
+
+
+
  
  
