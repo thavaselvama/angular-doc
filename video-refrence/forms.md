@@ -29,3 +29,14 @@ onSubmit( form : NgForm){
  - Both output same as the following 
  
  ![](https://github.com/thavaselvama/angular-doc/blob/master/img/form-sample.png.png)
+ 
+ ## Form validations  ```<form (ngSubmit)="onSubmit()" #f="ngForm" >```
+ ```
+ <button [disabled]="!f.valid" class="btn btn-primary" type="submit">Submit</button>
+ ```
+  - individual field validate set 
+  ```<input type="email" id="email" name="email" class="form-control" 
+         ngModel required email #email="ngModel">
+      <div *ngIf="!email.valid && email.touched "> Please enter valid email id</div>
+ ```
+ 
