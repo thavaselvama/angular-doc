@@ -115,7 +115,38 @@ ngOnDestroy(){
 
  ```
  
+ ## Subject
+ 
+ [link to Subject!](http://reactivex.io/documentation/subject.html)
+ [link to Subject!](https://rxjs-dev.firebaseapp.com/guide/subject)
+ 
+ - A Subject is like an Observable, but can multicast to many Observers. Subjects are like EventEmitters: they maintain a registry of many listeners.
+```
+import { Subject } from 'rxjs';
+ 
+const subject = new Subject<number>();
+ 
+subject.subscribe({
+  next: (v) => console.log(`observerA: ${v}`)
+});
+subject.subscribe({
+  next: (v) => console.log(`observerB: ${v}`)
+});
+ 
+subject.next(1);
+subject.next(2);
+ 
+// Logs:
+// observerA: 1
+// observerB: 1
+// observerA: 2
+// observerB: 2
+```
 
+Example subject
+
+[link to Subject!](https://stackblitz.com/edit/vide0-observer?file=src%2Fapp%2Fapp.component.ts)
+ 
 
 
 
