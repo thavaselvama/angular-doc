@@ -27,3 +27,5 @@ onSubmit( form : NgForm){
  ```
  
  - Both output same as the following 
+ 
+ ![](https://github.com/thavaselvama/angular-doc/blob/master/img/form-sample.png)
