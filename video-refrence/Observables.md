@@ -105,11 +105,15 @@ export class HomeComponent implements OnInit,OnDestroy {
 }
 
 ```
-- navigate other component destroy ```ngOnDestroy(){
+- navigate other component destroy 
+
+```
+ngOnDestroy(){
     this.numers.unsubscribe();
     this.mySubscription.unsubscribe()
   }
-  ```
+
+ ```
   
 
 
