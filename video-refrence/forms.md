@@ -41,4 +41,56 @@ onSubmit( form : NgForm){
          ngModel required email #email="ngModel">
       <div *ngIf="!email.valid && email.touched "> Please enter valid email id</div>
  ```
+ - #email="ngModel" Angular NgModel directive associated with this control that you can use in the template to check for control states such as valid and dirty
+ 
+ - you can combine list of fileds in a group using <b><div id="user-data" ngModelGroup="userData" #userData="ngModelGroup"></b>.
+ - and you create group of object. what is added fields in that group.
+ - you can validate list of groups.
+ 
+ example :
+ 
+ ```
+ <h3>Form</h3>
+<h5>Template-driven forms</h5>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form (ngSubmit)="onSubmit()" #f="ngForm" >
+        <div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" class="form-control" ngModel required>
+          </div>
+          <button class="btn btn-default" type="button">Suggest an Username</button>
+          <div class="form-group">
+            <label for="email">Mail</label>
+            <input type="email" id="email" name="email" class="form-control" 
+            ngModel required email #email="ngModel">
+          </div>
+          <div *ngIf="!email.valid && email.touched "> Please enter valid email id</div>
+        </div>
+        <div  *ngIf="!userData.valid && userData.touched ">
+          Please enter
+        </div>
+        <div class="form-group">
+          <label for="secret">Secret Questions</label>
+          <select id="secret" name="secret" [ngModel]="defaultSelect" class="form-control" required>
+            <option value="pet">Your first Pet?</option>
+            <option value="teacher">Your first teacher?</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <textarea name="question" class="form-control" [(ngModel)]="question"></textarea>
+        </div>
+        <p>You reply as {{question}}</p>
+        <button [disabled]="!f.valid" class="btn btn-primary" type="submit">Submit</button>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+```
+ 
  
