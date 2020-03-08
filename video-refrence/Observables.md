@@ -39,4 +39,79 @@ export class AppComponent {
  -  its an <strong>subscribe()</strong>
 ### 1.Handle data 2. Handle error 3. Handle Completion
 
+import packege ```import { Observer } from 'rxjs/Observer';```
+
+```
+const observable = Observable.create((obeserver : Observer)=>{
+  setTimeout(()=>{
+    obeserver.next("first")
+  },2000)
+})
+observable.subscribe(
+  (data : string)=>{
+    console.log(data)
+  }
+)
+```
+
+- If implement observable one component, switch another component behind the screen observable implemented component destroy but observable subscription keep in memory.
+
+- In this case should use unsubscribe(). import packege ```import { Subscription } from 'rxjs/Subscription';``
+
+- this you can call ngOnDestroy Lifecycle hook.
+
+Example :
+```
+import { Component, OnInit,OnDestroy } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
+import { Subscription } from 'rxjs/Subscription';
+import 'rxjs/Rx';
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
+})
+export class HomeComponent implements OnInit,OnDestroy {
+  numers : any = Subscription;
+  mySubscription : any = Subscription;
+
+  constructor() { }
+
+  ngOnInit() {
+    const number = Observable.interval(1000);
+    this.numers = number.subscribe(
+      (number: number) => {
+        console.log( number)
+      }
+    )
+
+    const observable = Observable.create((obeserver: Observer<string>) => {
+      setTimeout(() => {
+        obeserver.next("first")
+      }, 2000)
+    })
+    this.mySubscription = observable.subscribe(
+      (data: string) => {
+        console.log(data)
+      }
+    )
+  }
+  ngOnDestroy(){
+    this.numers.unsubscribe();
+    this.mySubscription.unsubscribe()
+  }
+
+}
+
+```
+- navigate other component destroy ```ngOnDestroy(){
+    this.numers.unsubscribe();
+    this.mySubscription.unsubscribe()
+  }
+  ```
+  
+
+
+
 
