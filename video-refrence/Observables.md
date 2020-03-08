@@ -116,6 +116,7 @@ ngOnDestroy(){
  ```
  
  ## Subject
+ - event emitter you can communicate accross application,Observable and subscribe you can do at the time
  
  [link to Subject!](http://reactivex.io/documentation/subject.html)
  [link to Subject!](https://rxjs-dev.firebaseapp.com/guide/subject)
