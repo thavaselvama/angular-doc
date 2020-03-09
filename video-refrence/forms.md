@@ -122,6 +122,52 @@ onSubmit( form : NgForm){
       }
     })
   ```
+ ## reactive-form
+ 
+ - import  ```import { ReactiveFormsModule } from '@angular/forms';``` in module
+ - import FormGroup ```import { FormGroup,FormControl,Validators } from '@angular/forms';```
+ ```
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+ <div formGroupName="userData">
+			<div class="form-group">
+				<label for="username">Username</label>
+				<input
+		            type="text"
+		            id="username"
+		            formControlName="username"
+		            class="form-control">
+		        </div>
+				<span *ngIf="!signupForm.get('userData.username').valid && signupForm.get('userData.username').touched"> Please enter valid name</span>
+				<div class="form-group">
+					<label for="email">email</label>
+					<input
+		            type="text"
+		            id="email"
+		             formControlName="email"
+		            class="form-control">
+		        </div>
+					<span *ngIf="!signupForm.get('userData.email').valid && signupForm.get('userData.email').touched"> Please enter valid email</span>
+				</div>
+    
+  ```
+  
+  ```
+  signupForm : FormGroup;
+   ngOnInit() {
+    this.signupForm = new FormGroup({
+      'userData' :new FormGroup({
+ 'username' : new FormControl(null,Validators.required),
+      'email' : new FormControl(null,[Validators.required,Validators.email]),
+      
+    }),
+    'gender' : new FormControl('male',Validators.required)
+      }) 
+  }
+  ```
+  
+  
+  
+ 
   
   
  
