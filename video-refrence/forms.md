@@ -10,7 +10,7 @@ There are two type of forms.
 
 
 2.Template-driven forms :  are useful for adding a simple form to an app, such as an email list signup form. They're easy to add to an app, but they don't scale as well as reactive forms. If you have very basic form requirements and logic that can be managed solely in the template, use template-driven forms.
-
+## Template-driven forms
 - Receive form from html to controller using ngForm ```<form (ngSubmit)="onSubmit()" #heroForm="ngForm">```
 
 ``` 
@@ -92,5 +92,36 @@ onSubmit( form : NgForm){
 </div>
 
 ```
- 
+- set all value control in one command 
+
+```
+ <button class="btn btn-default"
+           type="button" (click)="setSuperUser()">
+           Suggest an Username</button>
+  ```
+  - but this not best approch
+  ```
+  setSuperUser(){
+    this.sineUpForm.setValue({
+      userData :{
+        username : "suggestedName",
+        email : ''
+      },
+      secret : 'pet',
+      question : '',
+      gender : 'Female'
+
+    })
+  }
+  ```
+  - best Approch 
+  ```
+  this.sineUpForm.form.patchValue({
+      userData :{
+        username : "suggestedName", 
+      }
+    })
+  ```
+  
+  
  
