@@ -77,3 +77,8 @@ FormsModule | @angular/forms | When you want to build template driven forms (inc
 ReactiveFormsModule | @angular/forms | When you want to build reactive forms
 RouterModule | @angular/router | When you want to use RouterLink, .forRoot(), and .forChild()
 HttpClientModule |@angular/common/http | When you want to talk to a server
+Observable | rxjs/Observable | Emit data Observable using
+Observer | rxjs/Observer | Observer
+Subject | rxjs/Subject | Observable and subscribe you can do at the time
+ActivatedRoute | @angular/router | it carries the information about a route linked
+Params | @angular/router | Observable of the matrix 
