@@ -29,3 +29,40 @@ import { AppComponent } from './app.component';
 export class AppModule {}
 ```
 ![Angular](https://github.com/thavaselvama/angular-doc/blob/master/img/angular-architecture.png)
+
+## JavaScript modules vs. NgModules
+### JavaScript modules
+ - In JavaScript, modules are individual files with JavaScript code in them.
+ ```
+ import { AppComponent } from './app.component';
+ ```
+ - [JavaScript modules](https://hacks.mozilla.org/2015/08/es6-in-depth-modules/) help you namespace, preventing accidental global variables.
+ 
+## NgModules
+
+- NgModules are classes decorated with @NgModule. 
+- The @NgModule decorator’s imports array tells Angular what other NgModules the current module needs.
+```
+/* These are JavaScript import statements. Angular doesn’t know anything about these. */
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppComponent } from './app.component';
+
+/* The @NgModule decorator lets Angular know that this is an NgModule. */
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [     /* These are NgModule imports. */
+    BrowserModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+NgModule | JavaScript module
+------------ | -------------
+An NgModule bounds declarable classes only. Declarables are the only classes that matter to the Angular compiler. | Instead of defining all member classes in one giant file as in a JavaScript module, you list the module's classes in the @NgModule.declarations list.
+An NgModule can only export the declarable classes it owns or imports from other modules. It doesn't declare or export any other kind of class. | Unlike JavaScript modules, an NgModule can extend the entire application with services by adding providers to the @NgModule.providers list.
