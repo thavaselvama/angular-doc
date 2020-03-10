@@ -28,3 +28,4 @@ import { AppComponent } from './app.component';
 })
 export class AppModule {}
 ```
+![Angular](https://github.com/thavaselvama/angular-doc/blob/master/img/angular-architecture.png)
