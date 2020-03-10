@@ -17,7 +17,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 
 - Snapshot – This is the current snapshot of this route.
 - URL – It is an observable of the URL segments and it matched by this route
--Params – Observable of the matrix parameters scoped to this route
+- Params – Observable of the matrix parameters scoped to this route
 - QueryParams – Observable of the query parameters shared by all the routes
 - Fragment – Observable of the URL fragment shared by all the routes
 - Data – Observable of the static and resolved data of this route.
