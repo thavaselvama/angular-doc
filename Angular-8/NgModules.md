@@ -66,3 +66,14 @@ NgModule | JavaScript module
 ------------ | -------------
 An NgModule bounds declarable classes only. Declarables are the only classes that matter to the Angular compiler. | Instead of defining all member classes in one giant file as in a JavaScript module, you list the module's classes in the @NgModule.declarations list.
 An NgModule can only export the declarable classes it owns or imports from other modules. It doesn't declare or export any other kind of class. | Unlike JavaScript modules, an NgModule can extend the entire application with services by adding providers to the @NgModule.providers list.
+
+## Common module
+
+NgModule | Import it from	 | Why you use it
+------------ | ------------- | -------------
+BrowserModule | @angular/platform-browser | When you want to run your app in a browser
+CommonModule | 	@angular/common | When you want to use NgIf, NgFor
+FormsModule | @angular/forms | When you want to build template driven forms (includes NgModel)
+ReactiveFormsModule | @angular/forms | When you want to build reactive forms
+RouterModule | @angular/router | When you want to use RouterLink, .forRoot(), and .forChild()
+HttpClientModule |@angular/common/http | When you want to talk to a server
