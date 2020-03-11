@@ -82,3 +82,79 @@ Observer | rxjs/Observer | Observer
 Subject | rxjs/Subject | Observable and subscribe you can do at the time
 ActivatedRoute | @angular/router | it carries the information about a route linked
 Params | @angular/router | Observable of the matrix 
+
+## Types of feature modules
+1.Domain feature modules.
+
+2.Routed feature modules.
+
+3.Routing modules.
+
+4.Service feature modules.
+
+5.Widget feature modules.
+
+<table>
+ <tbody><tr>
+   <th style="vertical-align: top">
+     Feature Module
+   </th>
+   <th style="vertical-align: top">
+     Guidelines
+   </th>
+ </tr>
+ <tr>
+   <td>Domain</td>
+   <td>
+     Domain feature modules deliver a user experience dedicated to a particular application domain like editing a customer or placing an order.
+<p>     They typically have a top component that acts as the feature root and private, supporting sub-components descend from it.</p>
+<p>     Domain feature modules consist mostly of declarations. Only the top component is exported.</p>
+<p>     Domain feature modules rarely have providers. When they do, the lifetime of the provided services should be the same as the lifetime of the module.</p>
+<p>     Domain feature modules are typically imported exactly once by a larger feature module.</p>
+<p>     They might be imported by the root <code>AppModule</code> of a small application that lacks routing.</p>
+   </td>
+ </tr>
+ <tr>
+   <td>Routed</td>
+   <td>
+     Routed feature modules are domain feature modules whose top components are the targets of router navigation routes.
+<p>     All lazy-loaded modules are routed feature modules by definition.</p>
+<p>     Routed feature modules don’t export anything because their components never appear in the template of an external component.</p>
+<p>     A lazy-loaded routed feature module should not be imported by any module. Doing so would trigger an eager load, defeating the purpose of lazy loading.That means you won’t see them mentioned among the <code>AppModule</code> imports. An eager loaded routed feature module must be imported by another module so that the compiler learns about its components.</p>
+<p>     Routed feature modules rarely have providers for reasons explained in <a href="/guide/lazy-loading-ngmodules">Lazy Loading Feature Modules</a>. When they do, the lifetime of the provided services should be the same as the lifetime of the module. Don't provide application-wide singleton services in a routed feature module or in a module that the routed module imports.</p>
+   </td>
+ </tr>
+ <tr>
+   <td>Routing</td>
+   <td>
+<p>     A routing module provides routing configuration for another module and separates routing concerns from its companion module.</p>
+<p>     A routing module typically does the following:</p>
+     <ul>
+     <li>Defines routes.</li>
+     <li>Adds router configuration to the module's imports.</li>
+     <li>Adds guard and resolver service providers to the module's providers.</li>
+     <li>The name of the routing module should parallel the name of its companion module, using the suffix "Routing". For example, <code>FooModule</code> in <code>foo.module.ts</code> has a routing module named <code>FooRoutingModule</code> in <code>foo-routing.module.ts</code>. If the companion module is the root <code>AppModule</code>, the <code>AppRoutingModule</code> adds router configuration to its imports with <code>RouterModule.forRoot(routes)</code>. All other routing modules are children that import <code>RouterModule.forChild(routes)</code>.</li>
+     <li>A routing module re-exports the <code><a href="api/router/RouterModule" class="code-anchor">RouterModule</a></code> as a convenience so that components of the companion module have access to router directives such as <code><a href="api/router/RouterLink" class="code-anchor">RouterLink</a></code> and <code><a href="api/router/RouterOutlet" class="code-anchor">RouterOutlet</a></code>.</li>
+     <li>A routing module does not have its own declarations. Components, directives, and pipes are the responsibility of the feature module, not the routing module.</li>
+     </ul>
+<p>     A routing module should only be imported by its companion module.</p>
+   </td>
+ </tr>
+ <tr>
+   <td>Service</td>
+   <td>
+<p>     Service modules provide utility services such as data access and messaging. Ideally, they consist entirely of providers and have no declarations. Angular's <code><a href="api/common/http/HttpClientModule" class="code-anchor">HttpClientModule</a></code> is a good example of a service module.</p>
+<p>     The root <code>AppModule</code> is the only module that should import service modules.</p>
+   </td>
+ </tr>
+ <tr>
+   <td>Widget</td>
+   <td>
+<p>     A widget module makes components, directives, and pipes available to external modules. Many third-party UI component libraries are widget modules.</p>
+<p>     A widget module should consist entirely of declarations, most of them exported.</p>
+<p>     A widget module should rarely have providers.</p>
+<p>     Import widget modules in any module whose component templates need the widgets.</p>
+   </td>
+ </tr>
+</tbody>
+</table>
