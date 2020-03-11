@@ -158,3 +158,104 @@ Params | @angular/router | Observable of the matrix
  </tr>
 </tbody>
 </table>
+
+- The following table summarizes the key characteristics of each feature module group
+
+<table>
+ <tbody><tr>
+   <th style="vertical-align: top">
+     Feature Module
+   </th>
+   <th style="vertical-align: top">
+     Declarations
+   </th>
+   <th style="vertical-align: top">
+     Providers
+   </th>
+   <th style="vertical-align: top">
+     Exports
+   </th>
+   <th style="vertical-align: top">
+     Imported by
+   </th>
+ </tr>
+ <tr>
+   <td>Domain</td>
+   <td>Yes</td>
+   <td>Rare</td>
+   <td>Top component</td>
+   <td>Feature, AppModule</td>
+ </tr>
+ <tr>
+   <td>Routed</td>
+   <td>Yes</td>
+   <td>Rare</td>
+   <td>No</td>
+   <td>None</td>
+ </tr>
+ <tr>
+   <td>Routing</td>
+   <td>No</td>
+   <td>Yes (Guards)</td>
+   <td>RouterModule</td>
+   <td>Feature (for routing)</td>
+ </tr>
+ <tr>
+   <td>Service</td>
+   <td>No</td>
+   <td>Yes</td>
+   <td>No</td>
+   <td>AppModule</td>
+ </tr>
+ <tr>
+   <td>Widget</td>
+   <td>Yes</td>
+   <td>Rare</td>
+   <td>Yes</td>
+   <td>Feature</td>
+ </tr>
+</tbody></table>
+
+## Entry components
+- An entry component is any component that Angular loads imperatively, (which means you’re not referencing it in the template), by type. You specify an entry component by bootstrapping it in an NgModule, or including it in a routing definition.
+
+- There are two main kinds of entry components:
+
+   - The bootstrapped root component.
+   - A component you specify in a route definition.
+### A bootstrapped entry component
+ - A bootstrapped component is an entry component that Angular loads into the DOM during the bootstrap process (application launch). Other entry components are loaded dynamically by other means, such as with the router.
+
+- Angular loads a root AppComponent dynamically because it's listed by type in @NgModule.bootstrap.
+
+```
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent] // bootstrapped entry component
+})
+```
+### A routed entry component
+ - All router components must be entry components. Because this would require you to add the component in two places (router and entryComponents) the Compiler is smart enough to recognize that this is a router definition and automatically add the router component into entryComponents.
+
+```
+const routes: Routes = [
+  {
+    path: '',
+    component: CustomerListComponent
+  }
+];
+```
+## [Feature modules](https://stackblitz.com/angular/rxnnrbrrllk?file=src%2Fapp%2Fcustomer-dashboard%2Fcustomer-dashboard.module.ts)
+
+ - A feature module collaborates with the root module and with other modules through the services it provides and the components, directives, and pipes that it shares
+ - create seprate module with in component and to use in rootmodule.
+
