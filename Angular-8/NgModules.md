@@ -258,4 +258,5 @@ const routes: Routes = [
 
  - A feature module collaborates with the root module and with other modules through the services it provides and the components, directives, and pipes that it shares
  - create seprate module with in component and to use in rootmodule.
-
+## [Providers](https://run.stackblitz.com/api/angular/v1?file=src/app/app.component.ts)
+- A provider is an instruction to the Dependency Injection system on how to obtain a value for a dependency. 
