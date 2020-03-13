@@ -296,3 +296,9 @@ Example :
 - create service UserService you can use across the application if registor ```@NgModule({..  providers: [UserService],...})```
 - Incause you registor one component(hero) you can't use other component(herodetails).
 
+## [Lazy-loading feature modules](https://angular.io/guide/lazy-loading-ngmodules#lazy-loading-feature-modules)
+[example](https://stackblitz.com/angular/pdbkggrbejy?file=src%2Fapp%2Fapp.module.ts)
+
+- NgModules will load all which is module <b>declarations and imports</b>. whether its immediately necessary or not.
+-  For large apps with lots of routes, consider lazy loading—a design pattern that loads NgModules as needed.
+-  Lazy loading helps keep initial bundle sizes smaller, which in turn helps decrease load times.
