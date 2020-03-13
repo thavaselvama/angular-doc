@@ -284,8 +284,15 @@ import { UserService } from './user.service';
 export class UserModule {
 }
 ```
-## Singleton services
+## [Singleton services](https://angular.io/guide/singleton-services#singleton-services)
+[example](https://stackblitz.com/angular/omylrbvppab?file=src%2Fapp%2Fapp.module.ts)
+
 - A singleton service is a service for which only one instance exists in an app.
    - That mean one service use many component using ```@Injectable() to "root"``` 
    - Add route module provide : [sampleService]. this instance use across the application sigle instance.
-#
+   
+Example : 
+
+- create service UserService you can use across the application if registor ```@NgModule({..  providers: [UserService],...})```
+- Incause you registor one component(hero) you can't use other component(herodetails).
+
