@@ -303,4 +303,3 @@ Example :
 -  For large apps with lots of routes, consider lazy loading—a design pattern that loads NgModules as needed.
 -  Lazy loading helps keep initial bundle sizes smaller, which in turn helps decrease load times.
 
-<a href="http://example.com" target="_blank">http://example.com</a>
