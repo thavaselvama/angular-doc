@@ -260,3 +260,32 @@ const routes: Routes = [
  - create seprate module with in component and to use in rootmodule.
 ## [Providers](https://run.stackblitz.com/api/angular/v1?file=src/app/app.component.ts)
 - A provider is an instruction to the Dependency Injection system on how to obtain a value for a dependency. 
+### providedIn and NgModules 
+ - It's also possible to specify that a service should be provided in a particular @NgModule.
+ 
+ ```
+ import { Injectable } from '@angular/core';
+import { UserModule } from './user.module';
+
+@Injectable({
+  providedIn: UserModule,
+})
+export class UserService {
+}
+```
+```
+import { NgModule } from '@angular/core';
+
+import { UserService } from './user.service';
+
+@NgModule({
+  providers: [UserService],
+})
+export class UserModule {
+}
+```
+## Singleton services
+- A singleton service is a service for which only one instance exists in an app.
+   - That mean one service use many component using ```@Injectable() to "root"``` 
+   - Add route module provide : [sampleService]. this instance use across the application sigle instance.
+#
