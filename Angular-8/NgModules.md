@@ -303,3 +303,13 @@ Example :
 -  For large apps with lots of routes, consider lazy loading—a design pattern that loads NgModules as needed.
 -  Lazy loading helps keep initial bundle sizes smaller, which in turn helps decrease load times.
 
+## [Sharing modules](https://angular.io/guide/sharing-ngmodules)
+- Creating shared modules allows you to organize and streamline your code. 
+- You can put commonly used directives, pipes, and components into one module and then import just that module wherever you need it in other parts of your app.
+
+[example](https://stackblitz.com/edit/angular8materials) : 
+- here materials is shared module, which module you want just include ``` imports: [DemoMaterialModule]```
+   - It imports the CommonModule because the module's component needs common directives.
+   - It declares and exports the utility pipe, directive, and component classes.
+   - It re-exports the CommonModule and FormsModule.
+   
