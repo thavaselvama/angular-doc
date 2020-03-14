@@ -16,6 +16,10 @@
  
  common key | REACTIVE | TEMPLATE-DRIVEN
 ------------ | ------------- | -------------
-Content from cell 1 | Content from cell 2
-Content in the first column | Content in the second column
+Setup (form model)	 | More explicit, created in component class	 | Less explicit, created by directives
+Data model	| Structured	| Unstructured
+Predictability |	Synchronous |	Asynchronous
+Form validation |	Functions | Directives
+Mutability |	Immutable |	Mutable
+Scalability |	Low-level API access |	Abstraction on top of APIs
  
