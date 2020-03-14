@@ -24,11 +24,11 @@ Mutability |	Immutable |	Mutable
 Scalability |	Low-level API access |	Abstraction on top of APIs.
 
 ### Common foundation
-- FormControl tracks the value and validation status of an individual form control.
+- [FormControl](https://angular.io/api/forms/FormControl) tracks the value and validation status of an individual form control.
 
-- FormGroup tracks the same values and status for a collection of form controls.
+- [FormGroup](https://angular.io/api/forms/FormGroup) tracks the same values and status for a collection of form controls.
 
-- FormArray tracks the same values and status for an array of form controls.
+- [FormArray](https://angular.io/api/forms/FormArray) tracks the same values and status for an array of form controls.
 
-- ControlValueAccessor creates a bridge between Angular FormControl instances and native DOM elements.
+- [ControlValueAccessor](https://angular.io/api/forms/ControlValueAccessor) creates a bridge between Angular FormControl instances and native DOM elements.
  
