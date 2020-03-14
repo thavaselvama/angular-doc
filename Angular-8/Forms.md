@@ -21,5 +21,14 @@ Data model	| Structured	| Unstructured
 Predictability |	Synchronous |	Asynchronous
 Form validation |	Functions | Directives
 Mutability |	Immutable |	Mutable
-Scalability |	Low-level API access |	Abstraction on top of APIs
+Scalability |	Low-level API access |	Abstraction on top of APIs.
+
+### Common foundation
+- FormControl tracks the value and validation status of an individual form control.
+
+- FormGroup tracks the same values and status for a collection of form controls.
+
+- FormArray tracks the same values and status for an array of form controls.
+
+- ControlValueAccessor creates a bridge between Angular FormControl instances and native DOM elements.
  
