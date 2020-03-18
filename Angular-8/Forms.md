@@ -130,7 +130,68 @@ Change detection completes.
 7.Any subscribers to the valueChanges observable receive the new value.
 
 8.The control value accessor updates the form input element in the view with the latest favoriteColor value.
+
+## [Reactive forms](https://stackblitz.com/angular/kmkabdlgakn?file=src%2Fapp%2Fprofile-editor%2Fprofile-editor.component.ts)
+ - Reactive forms provide a model-driven approach to handling form inputs whose values change over time.
  
- 
+### Registering the reactive forms module
+ ```
+ import { ReactiveFormsModule } from '@angular/forms';
+
+@NgModule({
+  imports: [
+    // other imports ...
+    ReactiveFormsModule
+  ],
+})
+export class AppModule { }
+
+```
+#### Generating and importing a new form control 
+
+- The FormControl class is the basic building block when using reactive forms. 
+
+- To register a single form control, import the FormControl class into your component and create a new instance of the form control to save as a class property.
+
+```
+import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
+
+@Component({
+  selector: 'app-name-editor',
+  templateUrl: './name-editor.component.html',
+  styleUrls: ['./name-editor.component.css']
+})
+export class NameEditorComponent {
+  name = new FormControl('');
+}
+```
+#### Registering the control in the template
+
+- After you create the control in the component class, you must associate it with a form control element in the template.
+
+- Update the template with the form control using the formControl binding provided by FormControlDirective included in ReactiveFormsModule.
+
+```
+<label>
+  Name:
+  <input type="text" [formControl]="name">
+</label>
+
+```
+
+#### Replacing a form control value :
+
+cusom value set in component
+```
+updateName() {
+  this.name.setValue('Nancy');
+}
+```
+### Grouping form controls 
+
+
+
+
  
  
