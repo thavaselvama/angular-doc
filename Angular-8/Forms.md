@@ -229,7 +229,81 @@ export class ProfileEditorComponent {
 </form>
 <button type="submit" [disabled]="!profileForm.valid">Submit</button>
 ```
+### Creating nested form groups
+- When building complex forms, managing the different areas of information is easier in smaller sections, and some groups of information naturally fall into the same group
 
+#### Creating a nested group
+```
+import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
+@Component({
+  selector: 'app-profile-editor',
+  templateUrl: './profile-editor.component.html',
+  styleUrls: ['./profile-editor.component.css']
+})
+export class ProfileEditorComponent {
+  profileForm = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    address: new FormGroup({
+      street: new FormControl(''),
+      city: new FormControl(''),
+      state: new FormControl(''),
+      zip: new FormControl('')
+    })
+  });
+}
+```
+#### Grouping the nested form in the template
+- Add the address form group containing the street, city, state, and zip fields to the ProfileEditor template.
+
+```
+<div formGroupName="address">
+  <h3>Address</h3>
+
+  <label>
+    Street:
+    <input type="text" formControlName="street">
+  </label>
+
+  <label>
+    City:
+    <input type="text" formControlName="city">
+  </label>
+  
+  <label>
+    State:
+    <input type="text" formControlName="state">
+  </label>
+
+  <label>
+    Zip Code:
+    <input type="text" formControlName="zip">
+  </label>
+</div>
+```
+#### Partial model updates
+
+There are two ways to update the model value:
+
+ - Use the <b>setValue()</b> method to set a new value for an individual control. The setValue() method strictly adheres to the structure of the form group and replaces the entire value for the control.
+ ```
+ updateName() {
+  this.name.setValue('Nancy');
+}
+ ```
  
+
+ - Use the <b>patchValue()</b> method to replace any properties defined in the object that have changed in the form model.
+ ```
+ updateProfile() {
+  this.profileForm.patchValue({
+    firstName: 'Nancy',
+    address: {
+      street: '123 Drew Street'
+    }
+  });
+}
+```
  
