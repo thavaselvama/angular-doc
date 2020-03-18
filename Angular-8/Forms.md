@@ -194,6 +194,42 @@ updateName() {
 ```import { FormGroup, FormControl } from '@angular/forms';```
 #### [Creating a FormGroup instance](https://angular.io/guide/reactive-forms#step-1-creating-a-formgroup-instance)
 
+- Create a property in the component class named profileForm and set the property to a new form group instance. To initialize the form group, provide the constructor with an object of named keys mapped to their control.
+
+```
+import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+
+@Component({
+  selector: 'app-profile-editor',
+  templateUrl: './profile-editor.component.html',
+  styleUrls: ['./profile-editor.component.css']
+})
+export class ProfileEditorComponent {
+  profileForm = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+  });
+}
+```
+#### Associating the FormGroup model and view
+```
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  
+  <label>
+    First Name:
+    <input type="text" formControlName="firstName">
+  </label>
+
+  <label>
+    Last Name:
+    <input type="text" formControlName="lastName">
+  </label>
+
+</form>
+<button type="submit" [disabled]="!profileForm.valid">Submit</button>
+```
+
 
  
  
