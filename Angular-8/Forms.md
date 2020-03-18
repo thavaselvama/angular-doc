@@ -189,8 +189,10 @@ updateName() {
 }
 ```
 ### Grouping form controls 
+-Just as a form control instance gives you control over a single input field, a form group instance tracks the form state of a group of form control instances (for example, a form)
 
-
+```import { FormGroup, FormControl } from '@angular/forms';```
+#### [Creating a FormGroup instance](https://angular.io/guide/reactive-forms#step-1-creating-a-formgroup-instance)
 
 
  
