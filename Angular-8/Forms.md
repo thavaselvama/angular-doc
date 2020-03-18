@@ -306,4 +306,12 @@ There are two ways to update the model value:
   });
 }
 ```
+### Generating form controls with FormBuilder
+
+- Creating form control instances manually can become repetitive when dealing with multiple forms. The FormBuilder service provides convenient methods for generating controls.
+
+#### Importing the FormBuilder class
+```import { FormBuilder } from '@angular/forms';```
+#### Injecting the FormBuilder service
+```constructor(private fb: FormBuilder) { }```
  
