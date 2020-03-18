@@ -76,7 +76,7 @@ export class FavoriteColorComponent {
      - The FormControl instance emits the new value through the valueChanges observable.
      Any subscribers to the valueChanges observable receive the new value.
      
-!()(https://github.com/thavaselvama/angular-doc/blob/master/img/dataflow-reactive-forms-mtv.png).
+![](https://github.com/thavaselvama/angular-doc/blob/master/img/dataflow-reactive-forms-mtv.png).
  
  - The steps below outline the data flow from model to view.
 
