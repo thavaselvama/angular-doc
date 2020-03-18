@@ -87,3 +87,50 @@ export class FavoriteColorComponent {
 #### Data flow in template-driven forms:
  - In template-driven forms, each form element is linked to a directive that manages the form model internally. 
  - The diagrams below use the same favorite color example to demonstrate how data flows when an input field's value is changed from the view and then from the model.
+ 
+ #### VIEW TO MODEL
+ 
+ ![](https://github.com/thavaselvama/angular-doc/blob/master/img/dataflow-td-forms-vtm.png)
+ The steps below outline the data flow from view to model when the input value changes from Red to Blue.
+
+The user types Blue into the input element.
+
+1.The input element emits an "input" event with the value Blue.
+
+2.The control value accessor attached to the input triggers the setValue() method on the FormControl instance.
+
+3.The FormControl instance emits the new value through the valueChanges observable.
+
+4.Any subscribers to the valueChanges observable receive the new value.
+
+5.The control value accessor also calls the NgModel.viewToModelUpdate() method which emits an ngModelChange event.
+
+6.Because the component template uses two-way data binding for the favoriteColor property, the favoriteColor property in the
+
+7.component is updated to the value emitted by the ngModelChange event (Blue).
+ 
+  ####  MODEL TO VIEW 
+ ![](https://github.com/thavaselvama/angular-doc/blob/master/img/dataflow-td-forms-mtv.png)
+ 
+ The steps below outline the data flow from model to view when the favoriteColor changes from Blue to Red.
+
+1.The favoriteColor value is updated in the component.
+
+2.Change detection begins.
+
+3.During change detection, the ngOnChanges lifecycle hook is called on the NgModel directive instance because the value of one of its inputs has changed.
+
+4.The ngOnChanges() method queues an async task to set the value for the internal FormControl instance.
+Change detection completes.
+
+5.On the next tick, the task to set the FormControl instance value is executed.
+
+6.The FormControl instance emits the latest value through the valueChanges observable.
+
+7.Any subscribers to the valueChanges observable receive the new value.
+
+8.The control value accessor updates the form input element in the view with the latest favoriteColor value.
+ 
+ 
+ 
+ 
