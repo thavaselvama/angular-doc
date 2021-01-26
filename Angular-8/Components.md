@@ -1,4 +1,5 @@
-# Angular Components
+# [Angular Components] (https://angular.io/guide/component-overview#angular-components-overview)
+
  Components are the main building block for Angular applications. Each component consists of:
  
   * An HTML template that declares what renders on the page
