@@ -20,4 +20,5 @@
   ```
   ## Creating a component using the Angular CLI
   - Run the ng generate component <component-name> 
-  example : ng g c example-component --spec false /* if you don't want spec file */
+  example : ng g c example-component --spec false < if you don't want spec file >
+  [//]: # "Comment" and [//]: # (Comment)
