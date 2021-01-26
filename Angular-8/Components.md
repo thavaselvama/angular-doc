@@ -20,5 +20,27 @@
   ```
   ## Creating a component using the Angular CLI
   - Run the ng generate component <component-name> 
-  example : ng g c example-component --spec false < if you don't want spec file >
-  [//]: # "Comment" and [//]: # (Comment)
+  example : ng g c example-component --spec false  /// if you don't want spec file
+  
+  * Creating a component
+   - let we create component-overview
+   ```
+   import { Component } from '@angular/core';
+   ```
+```
+@Component({ -- @Component decorator
+  selector: 'app-component-overview', --> CSS selector for the component.
+  templateUrl: './component-overview.component.html',
+})
+```
+# Specifying a component's CSS selector
+- Every component requires a CSS selector. 
+- A selector instructs Angular to instantiate this component wherever it finds the corresponding tag in template HTML.
+- For example, consider a component hello-world.component.ts that defines its selector as app-hello-world. This selector instructs Angular to instantiate this component any time the tag <app-hello-world> appears in a template.
+
+Specify a component's selector by adding a selector statement to the @Component decorator.
+```
+@Component({
+  selector: 'app-component-overview',
+})
+```
