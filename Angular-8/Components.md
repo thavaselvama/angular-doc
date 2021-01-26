@@ -1,4 +1,6 @@
-# [Angular Components](https://angular.io/guide/component-overview#angular-components-overview)
+# [Angular Components](https://angular.io/guide/component-overview#angular-components-overview ){:target="_blank"}
+[link](https://angular.io/guide/component-overview#angular-components-overview){:target="_blank"}
+
 
  Components are the main building block for Angular applications. Each component consists of:
  
