@@ -11,3 +11,5 @@ reference [https://stackblitz.com/edit/thvangular8-input]
 <b>To use @Input(), you must configure the parent and child.</b>
 
 ### Configuring the child component
+
+
