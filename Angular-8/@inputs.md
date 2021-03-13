@@ -1,4 +1,5 @@
 reference [https://stackblitz.com/edit/thvangular8-input]
+reference [https://stackblitz.com/angular/nqlorlypjek?file=src%2Fapp%2Fapp.component.ts]
 ## @Input() and @Output() properties
 
 - @Input() and @Output() allow Angular to share data between the parent context and child directives or components. An @Input() property is writable while an @Output() property is observable
