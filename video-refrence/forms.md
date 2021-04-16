@@ -92,17 +92,17 @@ onSubmit( form : NgForm){
 </div>
 
 ```
-- set all value control in one command 
+- set all value control in one command - It will set all those value inside form
 
 ```
  <button class="btn btn-default"
            type="button" (click)="setSuperUser()">
            Suggest an Username</button>
   ```
-  - but this not best approch
+  - but this not best approch - it will set particular value - no need to enter other value like (email,secret)
   ```
   setSuperUser(){
-    this.sineUpForm.setValue({
+    this.sineUpForm.form.setValue({
       userData :{
         username : "suggestedName",
         email : ''
