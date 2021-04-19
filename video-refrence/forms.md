@@ -11,7 +11,7 @@ There are two type of forms.
 
 2.Template-driven forms :  are useful for adding a simple form to an app, such as an email list signup form. They're easy to add to an app, but they don't scale as well as reactive forms. If you have very basic form requirements and logic that can be managed solely in the template, use template-driven forms.
 ## Template-driven forms
-- Receive form from html to controller using ngForm ```<form (ngSubmit)="onSubmit()" #heroForm="ngForm">```
+- Receive form from html to controller using ngForm ```<form (ngSubmit)="onSubmit(heroForm)" #heroForm="ngForm">```
 
 ``` 
 import { NgForm } from '@angular/forms';
@@ -164,8 +164,94 @@ onSubmit( form : NgForm){
       }) 
   }
   ```
-  
-  
+  ### nested formgroup
+  ```
+   this.signupForm = new FormGroup({
+      userData: new FormGroup({
+        username: new FormControl(null, Validators.required),
+        email: new FormControl(null, [Validators.required, Validators.email])
+      }),
+
+      gender: new FormControl("male")
+    });
+    ```
+    
+    - html need change controll
+    ```
+     <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <span formGroupName="userData">
+          <div>
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                class="form-control"
+                formControlName="username"
+                required
+              />
+              <span
+                class="help-block"
+                *ngIf="!signupForm.get('userData.username').valid && signupForm.get('userData.username').touched"
+              >
+                Enter the name !
+              </span>
+            </div>
+
+            <button class="btn btn-default" type="button">
+              Suggest an Username
+            </button>
+            <div class="form-group">
+              <label for="email">Mail</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-control"
+                required
+                formControlName="email"
+              />
+              <span
+                class="help-block"
+                *ngIf="!signupForm.get('userData.email').valid && signupForm.get('userData.email').touched"
+              >
+                Enter the valid email !
+              </span>
+            </div>
+          </div>
+        </span>
+
+        <!-- <div class="form-group">
+          <label for="secret">Secret Questions</label>
+          <select id="secret" name="secret" ngModel class="form-control">
+            <option value="pet">Your first Pet?</option>
+            <option value="teacher">Your first teacher?</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <textarea name="question" name="ans" class="form-control"></textarea>
+        </div> -->
+
+        <div class="radio" *ngFor="let gender of genders">
+          <label>
+            <input
+              type="radio"
+              formControlName="gender"
+              name="gender"
+              [value]="gender"
+            />
+            {{gender}}
+          </label>
+        </div>
+        <button class="btn btn-primary" type="submit">
+          Submit
+        </button>
+        <button class="btn btn-default" type="submit">
+          ClearAll
+        </button>
+      </form>
+    ```
   
  
   
