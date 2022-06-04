@@ -53,7 +53,29 @@ output
 
 ```
 
-* concat ⭐
+* concat ⭐ - Subscribe to observables in order as previous completes
+  - one observable complete then should start second one
+```
+ let firstTimer$ = interval(1000).pipe(take(5),map(x=> x+10));
+    let secondTimer$ = interval(3000).pipe(take(10),map(y=> y+20));
+    let combined = concat(firstTimer$, secondTimer$);
+    combined.subscribe((data) => {
+      console.log(data);
+    });
+```
+
+output
+```
+10,
+11,
+12,
+13,
+14,
+15, /// end first $
+21,
+22,23,24,25,..
+```
+
 * concatAll
 * endWith
 * forkJoin
