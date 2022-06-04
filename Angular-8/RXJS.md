@@ -35,7 +35,7 @@ Active: decides when data is requested. | Passive: reacts to received data.
 
 ### Combination
 * combineAll
-* combineLatest - When any observable emits a value, emit the last emitted value from each.
+* combineLatest ⭐ - When any observable emits a value, emit the last emitted value from each.
   - emit latest value from each observable
   - [link](https://www.learnrxjs.io/learn-rxjs/operators/combination/combinelatest)
 ```
@@ -53,16 +53,16 @@ output
 
 ```
 
-* concat
+* concat ⭐
 * concatAll
 * endWith
 * forkJoin
-* merge 
+* merge ⭐
 * mergeAll
 * pairwise
 * race
-* startWith
-* withLatestFrom 
+* startWith ⭐
+* withLatestFrom ⭐
 * zip
 ### Conditional
 * defaultIfEmpty
