@@ -31,3 +31,110 @@ PULL | PUSH
 Pull	Passive: produces data when requested. | Push	Active: produces data at its own pace.	
 Active: decides when data is requested. | Passive: reacts to received data.
 
+## Operators
+
+### Combination
+* combineAll
+* combineLatest
+* concat
+* concatAll
+* endWith
+* forkJoin
+* merge 
+* mergeAll
+* pairwise
+* race
+* startWith
+* withLatestFrom 
+* zip
+### Conditional
+* defaultIfEmpty
+* every
+* iif
+* sequenceequal
+## Creation
+* ajax
+* create
+* defer
+* empty
+* from
+* fromEvent
+* generate
+* interval
+* of 
+* range
+* throw
+* timer
+## Error Handling
+* catch / catchError 
+* retry
+* retryWhen
+## Filtering
+* audit
+* auditTime
+* debounce
+* debounceTime
+* distinct
+* distinctUntilChanged 
+* distinctUntilKeyChanged
+* filter 
+* find
+* first
+* ignoreElements
+* last
+* sample
+* single
+* skip
+* skipUntil
+* skipWhile
+* take ⭐
+* takeLast
+* takeUntil ⭐
+* takeWhile
+* throttle
+* throttleTime
+## Multicasting
+* multicast
+* publish
+* share ⭐
+* shareReplay ⭐
+## Transformation
+* buffer
+* bufferCount
+* bufferTime ⭐
+* bufferToggle
+* bufferWhen
+* concatMap ⭐
+* concatMapTo
+* expand
+* exhaustMap
+* groupBy
+* map ⭐
+* mapTo
+* mergeMap / flatMap ⭐
+* mergeScan
+* partition
+* pluck
+* reduce
+* scan ⭐
+* switchMap ⭐
+* switchMapTo
+* toArray
+* window
+* windowCount
+* windowTime
+* windowToggle
+* windowWhen
+## Utility
+* tap / do ⭐
+* delay
+* delayWhen
+* dematerialize
+* finalize / finally
+* let
+* repeat
+* repeatWhen
+* timeInterval
+* timeout
+* timeoutWith
+* toPromise
