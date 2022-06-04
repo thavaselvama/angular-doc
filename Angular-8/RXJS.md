@@ -19,3 +19,5 @@
 <b>Schedulers:</b> are centralized dispatchers to control concurrency, allowing us to coordinate when computation happens on e.g. setTimeout or requestAnimationFrame or others.
 
 * help us continues data streame
+## Observables
+ * observables emit data over a preiod of time.
