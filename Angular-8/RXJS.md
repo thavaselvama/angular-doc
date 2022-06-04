@@ -155,6 +155,23 @@ output
  ```
 * withLatestFrom ⭐
 * zip - After all observables emit, emit values as an array
+     
+ ```
+  let num$ = of(1,2,3);
+    let name$ = of('react','node','angular');
+    let dev$ = of(true,true,false);
+
+    zip(num$,name$,dev$).subscribe(data=>{
+      console.log(data)
+    })
+ 
+ ````
+output
+```
+[1,'react',true];
+[2,'node',true]
+[3,'angular',false]
+ ```
 ### Conditional
 * defaultIfEmpty
 * every
