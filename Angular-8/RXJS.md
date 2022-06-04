@@ -37,6 +37,7 @@ Active: decides when data is requested. | Passive: reacts to received data.
 * combineAll
 * combineLatest - When any observable emits a value, emit the last emitted value from each.
   - emit latest value from each observable
+  - [link](https://www.learnrxjs.io/learn-rxjs/operators/combination/combinelatest)
 ```
   let firstTimer$ = interval(1000).pipe(take(10),map(x=> x+10));
     let secondTimer$ = interval(3000).pipe(take(10),map(y=> y+20));
