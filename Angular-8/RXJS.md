@@ -20,4 +20,14 @@
 
 * help us continues data streame
 ## Observables
- * observables emit data over a preiod of time.
+ * Emits multiple values over a period of time.
+ * Observables are lazy Push collections of multiple values.
+ * Lazy. An observable is not called until we subscribe to the observable
+ * Observable provides operators like map, forEach, filter, reduce, retry, retryWhen etc.
+
+## pull and push 
+PULL | PUSH 
+--- | --- | 
+Pull	Passive: produces data when requested. | Push	Active: produces data at its own pace.	
+Active: decides when data is requested. | Passive: reacts to received data.
+
