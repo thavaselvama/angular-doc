@@ -73,13 +73,28 @@ output
 14,
 15, /// end first $
 21,
-22,23,24,25,..
+22,23,24,25,..29
 ```
 
 * concatAll
 * endWith
-* forkJoin
-* merge ⭐
+* forkJoin - When all observables complete, emit the last emitted value from each.
+```
+ let firstTimer$ = interval(1000).pipe(take(5),map(x=> x+10));
+    let secondTimer$ = interval(3000).pipe(take(10),map(y=> y+20));
+    let combined = forkJoin(firstTimer$, secondTimer$);
+    combined.subscribe((data) => {
+      console.log(data);
+    });
+```
+
+output 
+
+```
+[14,29]
+```
+* merge ⭐ - Turn multiple observables into a single observable.
+   
 * mergeAll
 * pairwise
 * race
