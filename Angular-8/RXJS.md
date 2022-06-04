@@ -94,13 +94,67 @@ output
 [14,29]
 ```
 * merge ⭐ - Turn multiple observables into a single observable.
+   ```
+    let firstTimer$ = interval(1000).pipe(take(5),map(x=> x+10));
+    let secondTimer$ = interval(3000).pipe(take(10),map(y=> y+20));
+    let combined = merge(firstTimer$, secondTimer$);
+    combined.subscribe((data) => {
+      console.log(data);
+    });
    
+   ```
+ example:
+ 
+ ```
+10,
+11,
+12,
+13,
+14,
+15,
+20,21,....29
+ ```
 * mergeAll
 * pairwise
-* race
-* startWith ⭐
+* race - The observable to emit first is used.
+        - if 2 observable which one first emit will give that one, second observable should not emit
+
+example
+```
+ let firstTimer$ = interval(1000).pipe(take(5),map(x=> x+10));
+    let secondTimer$ = interval(3000).pipe(take(10),map(y=> y+20));
+    let combined = race(firstTimer$, secondTimer$);
+    combined.subscribe((data) => {
+      console.log(data);
+    });
+
+```
+output
+```
+10,11,12,13,14
+```
+
+* startWith ⭐ - Emit given value first.
+      - user define value first
+      -  data$.pipe(startWith("js")
+ example:
+ 
+ ```
+ let data$ = of("hello","react","node")
+    data$.pipe(startWith("js"),
+    scan((acc, curr) => `${acc} ${curr}`)
+    ).subscribe(val => console.log(val))
+ ```
+ 
+ output:
+ ```
+ js hello,
+ js react,
+ js node
+ 
+ ```
 * withLatestFrom ⭐
-* zip
+* zip - After all observables emit, emit values as an array
 ### Conditional
 * defaultIfEmpty
 * every
