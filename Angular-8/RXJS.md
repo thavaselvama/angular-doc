@@ -35,7 +35,23 @@ Active: decides when data is requested. | Passive: reacts to received data.
 
 ### Combination
 * combineAll
-* combineLatest
+* combineLatest - When any observable emits a value, emit the last emitted value from each.
+  - emit latest value from each observable
+```
+  let firstTimer$ = interval(1000).pipe(take(10),map(x=> x+10));
+    let secondTimer$ = interval(3000).pipe(take(10),map(y=> y+20));
+    let combined = combineLatest(firstTimer$, secondTimer$);
+    combined.subscribe((data) => {
+      console.log(data);
+    });
+```
+output
+```
+[12,20]
+[13,20]....
+
+```
+
 * concat
 * concatAll
 * endWith
