@@ -231,7 +231,7 @@ output
                  - if set time example 5 sec, with in 5 sec click multiple time, it will collect how many time click and give the array of data
     ```
      const source = fromEvent(document,'click')
-    const example = source.pipe(bufferTime(1000));
+    const example = source.pipe(bufferTime(5000));
     const subscribe = example.subscribe((val) =>
       console.log('Buffered with Time:', val)
     );
@@ -243,7 +243,22 @@ output
     
 * bufferToggle
 * bufferWhen
-* concatMap ⭐
+* concatMap ⭐ - Map values to inner observable, subscribe and emit in order.
+                - collect all the mouse click and emit the value
+
+```
+output:
+```
+0,1,2,3 ---- one time clicked
+0,1,2,3,0,1,2,3 --- two time clicked
+```
+const source = fromEvent(document,'click')
+    const example = source.pipe(concatMap(ev => interval(1000).pipe(take(4))));
+    const subscribe = example.subscribe((val) => 
+      console.log('Buffered with Time:', val)
+    );
+    
+  ```
 * concatMapTo
 * expand
 * exhaustMap
