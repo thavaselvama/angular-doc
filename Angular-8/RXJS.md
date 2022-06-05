@@ -294,7 +294,8 @@ const letters$ = of('a','b','c');
 * partition
 * pluck
 * reduce
-* scan ⭐
+* scan ⭐ - signature: scan(accumulator: function, seed: any): Observable
+
 * switchMap ⭐ - Map to observable, complete previous inner observable, emit values.
                  - excute the order, excution not complete inner observable, if comes new parent observable it will skip parent and inner observable.
  ```
