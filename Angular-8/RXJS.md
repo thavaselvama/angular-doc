@@ -244,7 +244,9 @@ output
 * bufferToggle
 * bufferWhen
 * concatMap ⭐ - Map values to inner observable, subscribe and emit in order.
+
                 - collect all the mouse click and emit the value
+                - first excute inner observable
 
 ```
 output:
@@ -265,13 +267,53 @@ const source = fromEvent(document,'click')
 * groupBy
 * map ⭐
 * mapTo
-* mergeMap / flatMap ⭐
+* mergeMap / flatMap ⭐ - merge 2 observable and excute 
+
+                          - If the order of emission and subscription of inner observables 
+
+```
+const letters$ = of('a','b','c');
+
+  let result$ = letters$
+  .pipe(
+   
+    mergeMap(x=>interval(1000).pipe(map(i=> x+i),take(4)))
+  )
+  result$.subscribe(data=>{
+    console.log(data)
+  })
+  
+  ```
+  
+  output:
+  ```
+  a0,b0,c0,a1,b1,c1,a2,b2,c2,a3,b3,c3.
+  
+ ```
 * mergeScan
 * partition
 * pluck
 * reduce
 * scan ⭐
-* switchMap ⭐
+* switchMap ⭐ - Map to observable, complete previous inner observable, emit values.
+                 - excute the order, excution not complete inner observable, if comes new parent observable it will skip parent and inner observable.
+ ```
+  const letters$ = of('a','b','c');
+
+  let result$ = letters$
+  .pipe(
+   
+    switchMap(x=>interval(1000).pipe(map(i=> x+i),take(4)))
+  )
+  result$.subscribe(data=>{
+    console.log(data)
+  })
+ ```
+ 
+ output:
+ 
+ c0,c1,c2,c3
+ 
 * switchMapTo
 * toArray
 * window
