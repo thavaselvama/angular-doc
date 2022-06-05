@@ -298,6 +298,7 @@ const letters$ = of('a','b','c');
 
 * switchMap ⭐ - Map to observable, complete previous inner observable, emit values.
                  - excute the order, excution not complete inner observable, if comes new parent observable it will skip parent and inner observable.
+                 -  call api 2 times based on search value switchMap will forgot 1st API. will give the latest one
  ```
   const letters$ = of('a','b','c');
 
