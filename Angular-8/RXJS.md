@@ -226,7 +226,21 @@ output
 ## Transformation
 * buffer
 * bufferCount
-* bufferTime ⭐
+* bufferTime ⭐ - Collect emitted values until provided time has passed, emit as array.
+
+                 - if set time example 5 sec, with in 5 sec click multiple time, it will collect how many time click and give the array of data
+    ```
+     const source = fromEvent(document,'click')
+    const example = source.pipe(bufferTime(1000));
+    const subscribe = example.subscribe((val) =>
+      console.log('Buffered with Time:', val)
+    );
+    ```
+    output:
+     []   /// without click
+     
+     ['Buffered with Time,'Buffered with Time'] // array value number of clicked
+    
 * bufferToggle
 * bufferWhen
 * concatMap ⭐
